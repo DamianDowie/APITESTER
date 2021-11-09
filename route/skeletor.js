@@ -119,11 +119,6 @@ router.post('/users', async (req, res) => {
         (req.body.age && typeof req.body.age != 'undefined' && req.body.age != null) ? userage = req.body.age : userage = userage;
         (req.body.phone_number && typeof req.body.phone_number != 'undefined' && req.body.phone_number != null) ? phone_number = req.body.phone_number : phone_number = phone_number;
 
-        for(let i in users){
-            if(users[i].id == id){
-                return res.status(403).send({message:"User with that ID exists"})
-            }
-        }
         users.push({
             id: users.length,
             name: username,
@@ -133,7 +128,7 @@ router.post('/users', async (req, res) => {
             timestamp: usertimestamp
         })
 
-        return res.send(`UPDATED USER ID ${id}`);
+        return res.send(`UPDATED USER ID ${users.length}`);
 
 })
 
