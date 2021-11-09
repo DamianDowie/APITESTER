@@ -102,7 +102,7 @@ router.delete('/users/:id', async (req, res) => {
         return res.status(404).send({ message: "no user found" });
     }
 })
-router.post('/users/', async (req, res) => {
+router.post('/users', async (req, res) => {
 
     let currentTime = new Date(Date.now());
     users[0].timestamp = currentTime;
