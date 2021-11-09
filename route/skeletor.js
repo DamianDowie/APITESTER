@@ -102,14 +102,11 @@ router.delete('/users/:id', async (req, res) => {
         return res.status(404).send({ message: "no user found" });
     }
 })
-router.post('/users/:id', async (req, res) => {
+router.post('/users/', async (req, res) => {
 
     let currentTime = new Date(Date.now());
     users[0].timestamp = currentTime;
 
-    let id = req.params.id;
-
-    if (id && typeof id != 'undefined') {
 
         let username = "";
         let usersurname = "";
@@ -128,7 +125,7 @@ router.post('/users/:id', async (req, res) => {
             }
         }
         users.push({
-            id: id,
+            id: users.length,
             name: username,
             surname: usersurname,
             age: userage,
@@ -137,9 +134,7 @@ router.post('/users/:id', async (req, res) => {
         })
 
         return res.send(`UPDATED USER ID ${id}`);
-    } else {
-        return res.status(418).send({ message: "Incorrent params" });
-    }
+
 })
 
 module.exports = router;
